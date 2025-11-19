@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOLDEN DAWN | Clan Oficial</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- ESTILO "DARK LUXURY" --- */
+        :root {
+            --gold: #D4AF37;
+            --gold-dim: #8a7018;
+            --black: #080808;
+            --text: #ecf0f1;
+            --danger: #ff4444;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--black);
+            color: var(--text);
+            font-family: 'Rajdhani', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #000; }
+        ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 4px; }
+
+        h1, h2, h3 { font-family: 'Cinzel', serif; text-transform: uppercase; letter-spacing: 2px; }
+
+        /* Fondo */
+        .bg-grid {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: linear-gradient(rgba(212, 175, 55, 0.05) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(212, 175, 55, 0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
+            z-index: -1;
+        }
+
+        /* --- HEADER & LIDERAZGO --- */
+        header {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: radial-gradient(circle at center, rgba(30,30,30,1) 0%, rgba(8,8,8,1) 80%);
+            padding: 40px 20px;
+        }
+
+        .clan-tag {
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--gold);
+            padding: 5px 15px;
+            border: 1px solid var(--gold);
+            border-radius: 4px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            letter-spacing: 4px;
+            animation: slideDown 1s ease;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            background: linear-gradient(to right, #fff, var(--gold), #fff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+            animation: zoomIn 1.2s ease;
+        }
+
+        .sub-text { color: #aaa; font-size: 1.1rem; margin-bottom: 50px; letter-spacing: 1px; }
+
+        /* CONTENEDOR DE LÍDERES (DUO) */
+        .leaders-wrapper {
+            display: flex;
+            gap: 50px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .leader-card {
+            position: relative;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .leader-avatar {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 4px solid var(--gold);
+            padding: 5px;
+            object-fit: cover;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+            transition: 0.5s;
+            background: #000;
+        }
+
+        /* Efecto especial para REN (Más grande) */
+        .leader-card.main .leader-avatar {
+            width: 200px;
+            height: 200px;
+            border-color: #fff; /* Borde blanco/platino para diferenciar */
+            box-shadow: 0 0 40px rgba(255, 255, 255, 0.3);
+        }
+
+        .leader-card:hover .leader-avatar { transform: scale(1.05); filter: brightness(1.2); }
+
+        .leader-info { margin-top: 15px; }
+        .leader-name { color: var(--gold); font-weight: 900; font-size: 1.5rem; text-transform: uppercase; }
+        .leader-role { color: #888; font-size: 0.9rem; margin-top: 5px; letter-spacing: 1px; }
+        
+        /* Estilo para el texto "El Ex" */
+        .broken-heart { color: var(--danger); font-size: 0.8rem; font-style: italic; }
+
+        /* --- SECCIONES --- */
+        section { padding: 80px 20px; max-width: 1100px; margin: 0 auto; }
+        
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 60px;
+            color: var(--gold);
+            position: relative;
+        }
+        .section-title::after {
+            content: ''; display: block; width: 60px; height: 3px; background: var(--gold);
+            margin: 10px auto 0;
+        }
+
+        /* --- CARDS JUEGOS --- */
+        .games-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .game-card {
+            background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            border-top: 1px solid #333;
+            transition: 0.4s;
+        }
+        .game-card:hover { transform: translateY(-10px); border-top: 1px solid var(--gold); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .game-card i { font-size: 3rem; color: var(--gold); margin-bottom: 20px; }
+        .game-card h3 { margin-bottom: 10px; color: #fff; }
+
+        /* --- REGLAS --- */
+        .rules-box {
+            background: rgba(20, 20, 20, 0.9);
+            border-left: 5px solid var(--gold);
+            padding: 40px;
+            border-radius: 10px;
+        }
+        .rule {
+            display: flex; align-items: center; margin-bottom: 20px; padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .rule:last-child { border-bottom: none; }
+        .rule i { color: var(--danger); margin-right: 15px; width: 20px; text-align: center; }
+
+        /* --- STRIKES --- */
+        .warning-system { display: flex; justify-content: center; gap: 30px; margin-top: 50px; flex-wrap: wrap; }
+        .warning-step { text-align: center; background: #151515; padding: 20px; border-radius: 10px; width: 200px; border: 1px solid #222; }
+        .weather-icon { font-size: 3rem; margin-bottom: 10px; display: block; }
+        .w-1 { color: #FFEE58; } 
+        .w-2 { color: #FF8F00; filter: drop-shadow(0 0 10px orange); } 
+        .w-3 { color: #B71C1C; filter: drop-shadow(0 0 10px red); } 
+
+        /* --- BOTÓN & FOOTER --- */
+        .cta-section { text-align: center; padding-bottom: 60px; }
+        .whatsapp-btn {
+            background: var(--gold); color: #000; padding: 20px 50px;
+            font-size: 1.5rem; font-weight: 900; text-decoration: none; text-transform: uppercase;
+            border-radius: 5px; clip-path: polygon(10% 0, 100% 0, 100% 80%, 90% 100%, 0 100%, 0 20%);
+            transition: 0.3s; display: inline-block;
+        }
+        .whatsapp-btn:hover { background: #fff; box-shadow: 0 0 30px var(--gold); transform: scale(1.05); }
+
+        footer { text-align: center; padding: 30px; border-top: 1px solid #222; color: #555; font-size: 0.9rem; }
+        .credits span { color: var(--gold); font-weight: bold; }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .leaders-wrapper { flex-direction: column; gap: 30px; }
+        }
+        
+        @keyframes slideDown { from { transform: translateY(-50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        @keyframes zoomIn { from { transform: scale(0.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    </style>
+</head>
+<body>
+
+    <div class="bg-grid"></div>
+
+    <header>
+        <div class="clan-tag">EST. 2025</div>
+        <h1>GOLDEN DAWN</h1>
+        <p class="sub-text">ROBLOX ELITE • DOMINIO TOTAL</p>
+        
+        <div class="leaders-wrapper">
+            
+            <div class="leader-card main">
+                <img src="image_68cc2c.jpg" alt="Ren" class="leader-avatar">
+                <div class="leader-info">
+                    <div class="leader-name">REN</div>
+                    <div class="leader-role">👑 LIDER SUPREMA</div>
+                </div>
+            </div>
+
+            <div class="leader-card">
+                <img src="https://ui-avatars.com/api/?name=Maxito&background=D4AF37&color=000&size=200" alt="Maxito" class="leader-avatar">
+                <div class="leader-info">
+                    <div class="leader-name">MAXITO</div>
+                    <div class="leader-role">CO-LÍDER <br> <span class="broken-heart">(El Ex 💔)</span></div>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <section>
+        <h2 class="section-title">Territorios</h2>
+        <div class="games-container">
+            <div class="game-card">
+                <i class="fa-brands fa-square-js"></i> 
+                <h3>Roblox Verse</h3>
+                <p>Desde <em>Prison Life</em> hasta <em>Brainrot</em>. Dominamos todo.</p>
+            </div>
+            <div class="game-card">
+                <i class="fa-solid fa-skull"></i>
+                <h3>PvP & War</h3>
+                <p>Batallas de clanes. Sin piedad.</p>
+            </div>
+            <div class="game-card">
+                <i class="fa-solid fa-gamepad"></i>
+                <h3>Variedad</h3>
+                <p>Donde haya caos, ahí estamos.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2 class="section-title">Reglamento</h2>
+        <div class="rules-box">
+            <div class="rule">
+                <i class="fa-solid fa-hand-fist"></i>
+                <span><strong>RESPETO:</strong> Respeto a Admins y Líderes (aunque sean exs).</span>
+            </div>
+            <div class="rule">
+                <i class="fa-solid fa-heart"></i>
+                <span><strong>TOLERANCIA:</strong> Respetar gustos. Aquí todos suman.</span>
+            </div>
+            <div class="rule">
+                <i class="fa-solid fa-ban"></i>
+                <span><strong>CERO ACOSO:</strong> No incomodar a nadie.</span>
+            </div>
+            <div class="rule">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <span><strong>NO +18:</strong> Contenido inapropiado = <span style="color:var(--danger)">BAN</span>.</span>
+            </div>
+            <div class="rule">
+                <i class="fa-solid fa-envelope-open-text"></i>
+                <span><strong>CHAT LIMPIO:</strong> No spam ni biblias.</span>
+            </div>
+        </div>
+
+        <div class="warning-system">
+            <div class="warning-step">
+                <span class="weather-icon w-1">🌤️</span>
+                <h3>Aviso 1</h3>
+                <p>Llamada de atención.</p>
+            </div>
+            <div class="warning-step">
+                <span class="weather-icon w-2">☀️</span>
+                <h3>Aviso 2</h3>
+                <p>Cuerda floja.</p>
+            </div>
+            <div class="warning-step">
+                <span class="weather-icon w-3">🌦️</span>
+                <h3>Expulsión</h3>
+                <p>Fuera del clan.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <h2 style="margin-bottom: 30px;">Únete a la Familia</h2>
+        <a href="https://chat.whatsapp.com/Jb39ZkpNR040FGldOj3nqk?mode=wwt" class="whatsapp-btn">
+            <i class="fa-brands fa-whatsapp"></i> WhatsApp
+        </a>
+    </section>
+
+    <footer>
+        <div class="credits">Hecho por <span>Dani</span></div>
+        <div style="font-size: 0.7rem; margin-top: 5px; opacity: 0.5;">GOLDEN DAWN ® 2025</div>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            const cards = document.querySelectorAll('.game-card, .rules-box');
+            cards.forEach(card => {
+                const position = card.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                if(position < screenPosition) {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
